@@ -27,7 +27,11 @@ def api_it():
 
     for host in hosts:
         hostname, info = host
-        ip = socket.gethostbyname(hostname)
+        try:
+            ip = socket.gethostbyname(hostname)
+        except:
+            print("NODNS", hostname)
+            continue
         date_limit = (datetime.now() - dateutil.relativedelta.relativedelta(years=1)).isoformat()
         try:
             results = api.send_arp_request({"ip": ip})
@@ -108,7 +112,7 @@ if __name__ == "__main__":
     parser.add_argument("-c", "--cert", help="A CA bundle that will be used to verify the NAV host certificate.")
     args = parser.parse_args()
 
-    api = False
+    api = True
 
     if api:
         api_it()
