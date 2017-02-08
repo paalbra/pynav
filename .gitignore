@@ -1,4 +1,5 @@
 *.crt
 *.pyc
-__pycache__
-venv
+*.swp
+__pycache__/
+venv/
