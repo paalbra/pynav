@@ -25,17 +25,18 @@ class NAVAPI():
 
     def send_arp_request(self, params):
         url = "%s/arp/" % self.url 
-        return self.send_request(url, params)
+        json_object = self.send_request(url, params)
+        results = json_object["results"]
+        while json_object["next"] is not None:
+            json_object = self.send_request(json_object["next"])
+            next_results = json_object["results"]
+            results.extend(next_results)
+        return results
 
     def send_request(self, url, params=None):
         res = requests.get(url, params, headers={"Authorization": "Token %s" % self.token}, verify=self.verify)
         logging.debug("HTTP: %d from %s took %f seconds" % (res.status_code, url, res.elapsed.total_seconds()))
         if res.status_code != 200:
             raise Exception("Request not OK: %d, %s" % (res.status_code, res.text))
-        json_object = res.json()
-        results = json_object["results"]
-        if json_object["next"] is not None:
-            # TODO: This should work, but it's not tested. Might not work if there are _many_ pages.
-            results.extend(self.send_request(json_object["next"]))
-        return results
+        return res.json()
 
