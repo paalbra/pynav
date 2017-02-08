@@ -35,7 +35,7 @@ class NAVAPI():
 
     def send_request(self, url, params=None):
         res = requests.get(url, params, headers={"Authorization": "Token %s" % self.token}, verify=self.verify)
-        logging.debug("HTTP: %d from %s took %f seconds" % (res.status_code, url, res.elapsed.total_seconds()))
+        logging.debug("HTTP: %d from %s took %f seconds" % (res.status_code, res.request.url, res.elapsed.total_seconds()))
         if res.status_code != 200:
             raise Exception("Request not OK: %d, %s" % (res.status_code, res.text))
         return res.json()
