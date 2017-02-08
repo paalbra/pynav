@@ -106,7 +106,7 @@ def just_do_it():
 
 if __name__ == "__main__":
     log_format = '%(asctime)s %(levelname)s %(message)s'
-    logging.basicConfig(format=log_format, level=logging.WARN)
+    logging.basicConfig(format=log_format, level=logging.DEBUG)
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--cert", help="A CA bundle that will be used to verify the NAV host certificate.")
