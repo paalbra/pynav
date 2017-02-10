@@ -1,6 +1,6 @@
 # About
 
-PyNAV is a very simple python module that interacts with the [NAV API](https://nav.uio.no/doc/howto/using_the_api.html).
+PyNAV is a very simple python module that interacts with [NAV](https://nav.uninett.no/) and its [API](https://nav.uninett.no/doc/latest/howto/using_the_api.html).
 
 # Install
 
@@ -12,11 +12,7 @@ PyNAV is a very simple python module that interacts with the [NAV API](https://n
 
 	import pynav
 
-	api = pynav.NAVAPI("https://nav.uio.no/api", "tokentokentokentokentokentokentokentoken", "nav.uio.no.crt")
+	api = pynav.NAVAPI("https://example.com/api", "tokentokentokentokentokentokentokentoken", "example.com.crt")
 
 # Caveats
-
-## nav.uio.no
-
-The current (2016-10-12) certificate, expiring on april 24. 2019, at nav.uio.no does not contain the full certificate chain. If you do not have all the needed CAs you'll need to provide your own certificate for verification.
 

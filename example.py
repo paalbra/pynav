@@ -20,7 +20,7 @@ if __name__ == "__main__":
     # Ask for the very secret NAV token.
     token = getpass.getpass("Enter NAV Token: ")
 
-    url = "https://nav.uio.no/api/1"
+    url = "https://example.com/api/1"
     api = pynav.NAVAPI(url, token, args.cert)
 
     # Each line in hosts.txt is expected to start with a hostname followed by a space.
