@@ -16,3 +16,4 @@ PyNAV is a very simple python module that interacts with [NAV](https://nav.unine
 
 # Caveats
 
+The API has some bugs. You might encounter very long request times and application crashes in some endpoints with certain parameters. [Bug tracker](https://github.com/UNINETT/nav/issues)
