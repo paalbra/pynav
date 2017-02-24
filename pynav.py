@@ -23,6 +23,20 @@ class NAVAPI():
     def __str__(self):
         return "[%s %s]" % (__class__.__name__, self.url)
 
+    def get_mac(self, ip):
+        """
+        Get all MAC addresses seen with the given IP.
+        Returns a dictionary with MAC as keys and the most recent end_time as values.
+        """
+        macs = {}
+        results = self.send_arp_request({"ip": ip})
+        for result in results:
+            mac = result["mac"]
+            end_time = result["end_time"]
+            if mac not in macs or macs[mac] < end_time:
+                macs[mac] = end_time
+        return macs
+
     def send_arp_request(self, params):
         url = "%s/arp/" % self.url 
         json_object = self.send_request(url, params)
