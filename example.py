@@ -44,7 +44,7 @@ if __name__ == "__main__":
             print("ARP-nay-inactive", ip, info)
         else:
             newest_record = sorted(results, key=lambda result: result["end_time"], reverse=True)[0]
-            if newest_record["end_time"] == "9999-12-31T23:59:59.999":
+            if newest_record["end_time"].startswith("9999-12-31T23:59:59"):
                 print("ARP-yay-active", ip, info, newest_record["start_time"], newest_record["end_time"], newest_record["mac"])
             elif newest_record["end_time"]:
                 print("ARP-yay-inactive", ip, info, newest_record["start_time"], newest_record["end_time"], newest_record["mac"])
