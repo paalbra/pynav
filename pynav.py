@@ -30,6 +30,8 @@ class NAVAPI():
         """
         macs = {}
         results = self.send_arp_request({"ip": ip})
+        if not results:
+            raise Exception("The IP returned no results: %s" % ip)
         for result in results:
             mac = result["mac"]
             end_time = result["end_time"]
