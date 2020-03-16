@@ -4,8 +4,8 @@ PyNAV is a very simple python module that interacts with [NAV](https://nav.unine
 
 # Install
 
-	$ virtualenv -p python3 venv
-	$ source venv/bin/activate
+	$ python3 -m venv venv
+	$ . venv/bin/activate
 	$ pip install -r requirements.txt
 
 # Usage
